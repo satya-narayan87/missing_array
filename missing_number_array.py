@@ -29,7 +29,7 @@ class Operation(object):
 
 
 if __name__ == "__main__":
-    # operation 
+    # operation ##
     input_arr = [0, 1, 3, 50, 75]
     #input_arr = input("input array")
     n = len(input_arr)
