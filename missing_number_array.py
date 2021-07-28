@@ -1,15 +1,34 @@
-def missing_array(arr, n, low, high):
- 
-    # Insert all elements of
-    # arr[] in set
-    s = set(arr)
- 
 
-    for x in range(low, high + 1):
-        if x not in s:
-            print(x, end = ' ')
- 
-if __name__ == '__main__':
+class Operation(object):
+    def missing_array(self, nums, lower, upper):
+        """
+        Arg: 
+        :nums: List[int]
+        :lower: int
+        :upper: int
+        """
+        def getRange(lower, upper):
+            if lower == upper:
+                return "{}".format(lower)
+            else:
+                return "{}->{}".format(lower, upper)
+        ranges = []
+        pre = lower - 1
+        
+        for i in range(len(nums) + 1):
+            if i == len(nums):
+                cur = upper + 1
+            else:
+                cur = nums[i]
+            if cur - pre >= 2:
+                ranges.append(getRange(pre + 1, cur - 1))
+                
+            pre = cur
+            
+        return ranges
+
+
+if __name__ == "__main__":
     # operation 
     input_arr = [0, 1, 3, 50, 75]
     #input_arr = input("input array")
@@ -17,5 +36,6 @@ if __name__ == '__main__':
     low_range = int(input("Please Enter lower range"))
     high_range = int(input("please Enter higher range"))
 
-    missing_array(input_arr, n, low_range, high_range)
- 
+    obj = Operation()
+    print(obj.missing_array(input_arr,low_range,high_range))
+
